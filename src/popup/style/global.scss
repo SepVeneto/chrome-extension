@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 381px;
+  font-family: "KaiTi";
+
+  button, input {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 1px solid #222;
+    padding: .5rem;
+    margin: 4px;
+    font-family: "KaiTi";
+    background: #fff;
+    outline: none;
+    font-size: 1.2rem;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

@@ -2,3 +2,153 @@ body {
   margin: 0;
   display: flex;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: gray;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background: silver;
+}
+
+.detail-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-flow: wrap;
+
+  .remove {
+    animation: removeDetail .5s;
+  }
+  .mask {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: gray;
+    opacity: .5;
+    z-index: 1;
+  }
+  .detail {
+    animation: detailInfo .5s;
+    z-index: 2;
+
+    input, textarea {
+      text-align: center;
+      background: inherit;
+      color: inherit;
+      font-size: inherit;
+      font-style: inherit;
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+
+    textarea {
+      text-align: left;
+      height: 100%;
+    }
+  }
+  li {
+    background: crimson;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    filter: drop-shadow(2px 4px 6px black);
+    border-radius: 20px 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:nth-of-type(even) {
+      transform: rotate(4deg);
+    }
+
+    &:nth-of-type(3n) {
+      transform: rotate(-3deg);
+    }
+
+    &:nth-of-type(5n) {
+      transform: rotate(5deg);
+    }
+
+    .detail-title {
+      text-align: center;
+      border-bottom: 1px solid #222;
+      font-size: 1.2rem;
+      word-break: break-all;
+      margin: 4px;
+    }
+
+    .detail-content {
+      height: 100%;
+      word-break: break-all;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: 1.1rem;
+    }
+  }
+
+  .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #222;
+    transform: rotate(45deg);
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(225deg) scale(1.5);
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: calc(100% + 1px);
+      height: 1px;
+      background: #222;
+      position: absolute;
+      top: 48%;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: calc(100% + 1px);
+      background-color: #222;
+      position: absolute;
+      left: 48%;
+    }
+  }
+  @keyframes detailInfo {
+    from {
+      transform: scale(1);
+      position: relative;
+    }
+  }
+
+  @keyframes removeDetail {
+    from {
+      z-index: 2;
+    }
+    99% {
+      z-index: 2;
+    }
+    100% {
+      transform: none;
+    }
+  }
+}
