@@ -1,5 +1,6 @@
 # chrome-extension
-摸鱼小助手
+摸鱼小助手  
+[下载地址](https://github.com/SepVeneto/chrome-extension/releases)
 ## 简介
 基于react,redux和typescript开发的一个chrome扩展。  
 主要功能是待办事项，原型是redux官方示例的[todo列表](https://www.redux.org.cn/docs/basics/ExampleTodoList.html)
