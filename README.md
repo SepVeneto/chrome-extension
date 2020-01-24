@@ -12,5 +12,5 @@
 ![alt 添加详情](https://raw.githubusercontent.com/SepVeneto/images/master/chrom-extension/test1.gif)
 
 3. 设置桌面通知的时间，点击跳转待办详情
-![alt 桌面通知](https://raw.githubusercontent.com/SepVeneto/images/master/chrom-extension/TIM%E6%88%AA%E5%9B%BE20200124120022.png)
+![alt 桌面通知](https://raw.githubusercontent.com/SepVeneto/images/master/chrom-extension/TIM%E6%88%AA%E5%9B%BE20200124120022.png)  
 点击后可直接查看所有的待办详情
