@@ -11,6 +11,7 @@ const App = ({todos, onEditTodo, onDelete}: DetailType) => {
     <ul className="detail-list">
       {todos.map(item => (
         <Detail
+          key={item.id}
           {...item}
           onEdit={(title: string, content: string) => onEditTodo(item.id, title, content)}
           onDelete={() => onDelete(item.id)}

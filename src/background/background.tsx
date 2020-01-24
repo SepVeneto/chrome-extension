@@ -25,6 +25,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   })
 })
 
+chrome.notifications.onClicked.addListener(() => {
+  chrome.tabs.create({url: 'details.html'});
+})
+
 let timer: NodeJS.Timeout;
 function setNotifcations(settings: Options) {
   console.log('get: ', settings.homeTime)

@@ -15,8 +15,9 @@ const detail = ({title, content, onDelete, onEdit}: todo) => {
     const CENTER_WIDTH = document.body.offsetWidth / 2;
     const CENTER_HEIGHT = document.body.offsetHeight / 2;
     const DETAIL_X = node?.offsetLeft;
+    const DETAIL_WIDTH = (node?.offsetWidth || 0) / 2;
     const DETAIL_Y = node?.offsetTop;
-    const x = CENTER_WIDTH - (DETAIL_X || 0);
+    const x = CENTER_WIDTH - (DETAIL_X || 0) - DETAIL_WIDTH;
     const y = CENTER_HEIGHT - (DETAIL_Y || 0);
     setTransform(`translate(${x}px, ${y}px) scale(2)`);
   }

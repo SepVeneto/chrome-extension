@@ -5,7 +5,7 @@ import App from "../App";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state: Store) => {
-  let list = state.todos || [];
+  let list = state.todos;
   chrome.storage.local.get(res => {
     list = res.todos || state.todos;
   })

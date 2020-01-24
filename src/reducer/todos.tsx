@@ -18,7 +18,9 @@ const todos = (state: Array<State>=[], action: Action) => {
       return list;
     case 'EDIT_TODO':
       const editList = state.map(todo =>
-        (todo.id === action.id) ? {...todo, title: action.title, content: action.content}: todo
+        (todo.id === action.id) ? 
+          {...todo, title: action.title, content: action.content ? action.content : todo.content, update: new Date().getTime()}
+          : todo
       );
       saveData({todos: editList})
       return editList;
