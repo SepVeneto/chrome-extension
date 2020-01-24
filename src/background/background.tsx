@@ -16,9 +16,10 @@ chrome.storage.local.get(res => {
 })
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  sendResponse('success');
   chrome.storage.local.get(res => {
+    sendResponse('success');
     const settings = res.settings;
+    console.log('lunchTime: ', settings.lunchTime)
     const list = res.todos || [];
     setBadge(list);
     setNotifcations(settings)
@@ -30,11 +31,12 @@ chrome.notifications.onClicked.addListener(() => {
 })
 
 let timer: NodeJS.Timeout;
+
 function setNotifcations(settings: Options) {
-  console.log('get: ', settings.homeTime)
   clearInterval(timer);
   timer = setInterval(() => {
     const stage = getStage(settings)
+    console.log(stage)
     if (stage === 'workTime') {
       createNotification(stage);
     } else if (stage === 'lunchTime') {
@@ -54,7 +56,7 @@ function setNotifcations(settings: Options) {
       //   message: `${readData()}个待办事项`
       // })
     }
-  }, 1000 * 30)
+  }, 1000 * 60)
 }
 
 function createNotification(stage: string) {
@@ -76,6 +78,7 @@ function getStage(settings: Options) {
   const hour = currentHour > 9 ? currentHour.toString() : `0${currentHour}`;
   const minute = currentMinute > 9 ? currentMinute.toString() : `0${currentMinute}`;
   const {workTime, lunchTime, homeTime} = settings;
+  console.log(lunchTime, hour, minute);
   return {
     [ workTime ]: 'workTime',
     [ lunchTime ]: 'lunchTime',

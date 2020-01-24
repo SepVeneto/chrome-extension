@@ -8,9 +8,9 @@ const App: React.FC = () => {
   const [homeTime, setHomeTime] = useState('17:45');
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
+    const settings = { workTime, lunchTime, homeTime };
+    saveData({settings})
     chrome.runtime.sendMessage('save', () => {
-      const settings = { workTime, lunchTime, homeTime };
-      saveData({settings})
       window.close();
     })
   }
@@ -26,15 +26,15 @@ const App: React.FC = () => {
       <form className="options">
         <div className="options__item">
           <label>上班时间：</label>
-          <input value={workTime} onChange={(e) => setWorkTime(e.target.value)} />
+          <input type="time" value={workTime} onChange={(e) => setWorkTime(e.target.value)} />
         </div>
         <div className="options__item">
           <label>午饭时间：</label>
-          <input value={lunchTime} onChange={(e) => setLunchTime(e.target.value)} />
+          <input type="time" value={lunchTime} onChange={(e) => setLunchTime(e.target.value)} />
         </div>
         <div className='options__item'>
           <label>下班时间：</label>
-          <input value={homeTime} onChange={(e) => setHomeTime(e.target.value)} />
+          <input type="time" value={homeTime} onChange={(e) => setHomeTime(e.target.value)} />
         </div>
         <button onClick={handleClick}>保存</button>
       </form>
