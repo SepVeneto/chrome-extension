@@ -19,6 +19,8 @@ body {
 }
 
 .detail-list {
+  border-top: 2px solid black;
+  width: 100vw;
   display: flex;
   list-style: none;
   margin: 0;
@@ -149,6 +151,44 @@ body {
     }
     100% {
       transform: none;
+    }
+  }
+}
+
+.detail-add {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border: 10px solid #4ab3f3;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  cursor: pointer;
+
+  .add-icon {
+    width: 150px;
+    height: 150px;
+    position: relative;
+
+    &::before {
+      content: '';
+      background: #4ab3f3;
+      width: 10px;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      content: '';
+      background: #4ab3f3;
+      width: 100%;
+      height: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }

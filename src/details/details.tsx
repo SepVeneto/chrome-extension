@@ -4,14 +4,14 @@ import { createStore } from 'redux';
 import Reducer from '../reducer';
 import './details.scss';
 import { Provider } from 'react-redux';
-import VisibleDetailList from './containers/visibleDetaiList';
+import App from './App';
 
 chrome.storage.local.get(res => {
   const list = res || {};
   const store = createStore(Reducer, list);
   ReactDom.render(
     <Provider store={store}>
-      <VisibleDetailList />
+      <App />
     </Provider>,
     document.getElementById('root')
   );

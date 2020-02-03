@@ -1,7 +1,7 @@
 import { Store } from "../../type";
 import { Dispatch } from "react";
-import { editTodo, deleteTodo } from "../../action";
-import App from "../App";
+import { editTodo, deleteTodo, addTodo } from "../../action";
+import DetailList from './index';
 import { connect } from "react-redux";
 
 const mapStateToProps = (state: Store) => {
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
     },
     onDelete (id: number) {
       dispatch(deleteTodo(id));
+    },
+    onAddTodo (title: string, content: string) {
+      dispatch(addTodo(title, content));
     }
   }
 }
@@ -28,6 +31,6 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
 const visibleDetailList = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(DetailList);
 
 export default visibleDetailList;

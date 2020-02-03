@@ -36,3 +36,11 @@ export const toggleTodo = (id: number) => {
     id,
   }
 };
+
+export const addColumn = (name: string) => {
+  return {
+    type: 'ADD_COLUMN',
+    id: `column ${new Date().getTime()}`,
+    name,
+  }
+}

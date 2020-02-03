@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react';
-import Detail from './detail';
-import { State } from '../type';
-interface DetailType {
-  todos: Array<State>,
-  onEditTodo: Function,
-  onDelete: Function,
-};
-const App = ({todos, onEditTodo, onDelete}: DetailType) => {
+import React from 'react';
+import Column from './components/column';
+import DetailList from './detailList/container';
+
+const App = () => {
   return (
-    <ul className="detail-list">
-      {todos.map(item => (
-        <Detail
-          key={item.id}
-          {...item}
-          onEdit={(title: string, content: string) => onEditTodo(item.id, title, content)}
-          onDelete={() => onDelete(item.id)}
-        />
-      ))}
-    </ul>
+    <div>
+      <Column />
+      <DetailList />
+    </div>
   )
 }
 

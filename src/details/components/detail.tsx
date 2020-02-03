@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useRef, CSSProperties, AnimationEventHandler } from 'react';
-import { todo } from '../type';
+import { todo } from '../../type';
 
 const detail = ({title, content, onDelete, onEdit}: todo) => {
   const [detailClass, addDetailClass] = useState('');
