@@ -1,9 +1,10 @@
-export const addTodo = (title: string, content: string = '') => {
+export const addTodo = (title: string, content: string = '', columnId: string = 'default') => {
   return {
     type: 'ADD_TODO',
     id: new Date().getTime(),
     title,
     content,
+    columnId,
   }
 };
 
@@ -42,5 +43,12 @@ export const addColumn = (name: string) => {
     type: 'ADD_COLUMN',
     id: `column ${new Date().getTime()}`,
     name,
+  }
+}
+
+export const setVisibleColumn = (columnId: string) => {
+  return {
+    type: 'SET_VISIBLE_COLUMN',
+    columnId,
   }
 }

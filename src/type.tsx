@@ -6,6 +6,7 @@ export interface State {
   content: string,
   update: number,
   completed: boolean,
+  columnId: string,
 };
 
 export interface Action {
@@ -14,6 +15,7 @@ export interface Action {
   title: string,
   content: string,
   filter: string,
+  columnId: string,
 }
 
 export interface todo {
@@ -32,7 +34,14 @@ export interface Options {
   homeTime: string,
 };
 
+export interface Column {
+  id: string,
+  name: string,
+};
+
 export interface Store {
+  columns: Array<Column>,
   todos: Array<State>,
   visibilityFilter: string,
+  columnId: string,
 }

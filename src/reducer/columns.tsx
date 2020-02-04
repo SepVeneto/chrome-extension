@@ -1,7 +1,4 @@
-interface Column {
-  id: string,
-  name: string,
-}
+import { Column } from "../type";
 
 interface Action {
   type: string,

@@ -3,11 +3,12 @@ import Detail from '../components/detail';
 import { State } from '../../type';
 interface DetailType {
   todos: Array<State>,
+  columnId: string,
   onEditTodo: Function,
   onDelete: Function,
   onAddTodo: Function,
 };
-const App = ({todos, onEditTodo, onDelete, onAddTodo}: DetailType) => {
+const App = ({todos, columnId, onEditTodo, onDelete, onAddTodo}: DetailType) => {
   return (
     // <Fragment>
     // <Operate />
@@ -22,7 +23,7 @@ const App = ({todos, onEditTodo, onDelete, onAddTodo}: DetailType) => {
       ))}
       <div
         className="detail-add"
-        onClick={() => onAddTodo('', '')}
+        onClick={() => onAddTodo('', '', columnId)}
       >
         <div className="add-icon"></div>
       </div>

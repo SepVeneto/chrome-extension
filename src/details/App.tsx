@@ -1,5 +1,5 @@
 import React from 'react';
-import Column from './components/column';
+import Column from './columns/container';
 import DetailList from './detailList/container';
 
 const App = () => {

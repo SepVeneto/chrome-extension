@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state: Store) => {
   let list = state.todos;
+  const columnId = state.columnId;
   chrome.storage.local.get(res => {
     list = res.todos || state.todos;
   })
   return {
-    todos: list,
+    columnId,
+    todos: list.filter(item => item.columnId === columnId),
   }
 }
 
@@ -22,8 +24,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
     onDelete (id: number) {
       dispatch(deleteTodo(id));
     },
-    onAddTodo (title: string, content: string) {
-      dispatch(addTodo(title, content));
+    onAddTodo (title: string, content: string, columnId: string) {
+      dispatch(addTodo(title, content, columnId));
     }
   }
 }

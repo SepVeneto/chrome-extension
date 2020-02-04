@@ -3,15 +3,16 @@ import { saveData } from '../utils/storage';
 const todos = (state: Array<State>=[], action: Action) => {
   switch(action.type) {
     case 'ADD_TODO':
-      const {id, title, content} = action;
+      const {id, title, content, columnId} = action;
       const list = [
         ...state,
         {
           id,
-          title,
+          title: columnId,
           content,
           update: new Date().getTime(),
-          completed: false
+          completed: false,
+          columnId,
         }
       ];
       saveData({todos: list});
