@@ -26,12 +26,14 @@ body {
   margin: 0;
   padding: 0;
   flex-flow: wrap;
+  padding-top: 48px;
 
   .remove {
     animation: removeDetail .5s;
   }
   .mask {
     position: absolute;
+    top: 0;
     width: 100vw;
     height: 100vh;
     background: gray;
@@ -167,8 +169,8 @@ body {
   cursor: pointer;
 
   .add-icon {
-    width: 150px;
-    height: 150px;
+    width: 75%;
+    height: 75%;
     position: relative;
 
     &::before {
@@ -189,6 +191,22 @@ body {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+    }
+  }
+
+  &__small {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-width: 2px;
+    .add-icon {
+      &::before {
+        width: 2px;
+      }
+
+      &::after {
+        height: 2px;
+      }
     }
   }
 }

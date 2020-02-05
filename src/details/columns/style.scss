@@ -12,14 +12,29 @@
       width: 50px;
       height: 35px;
       color: #fff;
+      font-size: 1.2rem;
       background-color: blue;
       vertical-align: middle;
       position: relative;
+      font-family: 'KaiTi';
+      cursor: pointer;
+      
+      input {
+        font-family: inherit;
+        font-size: inherit;
+        width: inherit;
+        color: inherit;
+        border: 0;
+        border-bottom: 1px solid #fff;
+        background-color: inherit;
+        outline: none;
+      }
 
       .mark-name {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
+        word-break: keep-all;
       }
 
       .mark {

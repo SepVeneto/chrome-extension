@@ -8,7 +8,7 @@ const todos = (state: Array<State>=[], action: Action) => {
         ...state,
         {
           id,
-          title: columnId,
+          title,
           content,
           update: new Date().getTime(),
           completed: false,

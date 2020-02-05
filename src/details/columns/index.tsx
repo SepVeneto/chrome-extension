@@ -1,33 +1,43 @@
-import React, { useEffect, useState, SetStateAction } from 'react';
+import React, { useEffect, useState, SetStateAction, useRef, MouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { Column } from '../../type';
 import './style.scss';
+import ButtonAdd from '../components/ButtonAdd';
+import ColumnItem from './column';
 
 interface ColumnList {
   columns: Array<Column>,
   columnId: string,
   onAddColumn: Function,
+  onEditColumn: Function,
   onSetVisibleColumn: Function,
 };
 
-const Column = ({ columnId, columns, onAddColumn, onSetVisibleColumn }: ColumnList) => {
-  const [currentColumn, setCurrentColumn]: [string, Function]= useState(columns[0].id);
-  useEffect(() => {
-    setCurrentColumn(columns[0].id);
-  }, [])
+const Column = ({ columns, onAddColumn, onEditColumn, onSetVisibleColumn }: ColumnList) => {
+  const [activeColumn, setActiveColumn]: [string, Function] = useState(columns[0].id)
+  function handleClick() {
+    const columnName: string = `${new Date().getTime().toString()}`;
+    onAddColumn(columnName);
+  }
+
+  function changeActiveColumn(id: string) {
+    setActiveColumn(id)
+    onSetVisibleColumn(id);
+  }
+
   return (
     <div className="todo-column">
       <ul>
         {columns.map(item => (
-          <li onClick={() => { setCurrentColumn(item.id); onSetVisibleColumn(item.id)}}>
-            <div className="mark-name"><span>{item.name}</span></div>
-            {item.id === currentColumn && <div className="mark"></div>}
-          </li>
+          <ColumnItem
+            {...item}
+            active={activeColumn}
+            onChangeActive={(id: string) => changeActiveColumn(id)}
+            onEditColumn={(id: string, name: string) => onEditColumn(id, name)}
+          />
         ))}
       </ul>
-      <div
-        onClick={() => onAddColumn(new Date().getTime().toString())}
-      >add</div>
+      <ButtonAdd size="small" onClick={() => handleClick()} />
     </div>
   )
 }

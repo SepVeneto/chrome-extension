@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import Detail from '../components/detail';
 import { State } from '../../type';
+import ButtonAdd from '../components/ButtonAdd';
 interface DetailType {
   todos: Array<State>,
   columnId: string,
@@ -21,12 +22,13 @@ const App = ({todos, columnId, onEditTodo, onDelete, onAddTodo}: DetailType) => 
           onDelete={() => onDelete(item.id)}
         />
       ))}
-      <div
+      <ButtonAdd onClick={() => onAddTodo('', '', columnId)} />
+      {/* <div
         className="detail-add"
         onClick={() => onAddTodo('', '', columnId)}
       >
         <div className="add-icon"></div>
-      </div>
+      </div> */}
     </ul>
     // </Fragment>
   )

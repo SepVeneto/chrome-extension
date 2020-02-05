@@ -1,4 +1,5 @@
 import { Column } from "../type";
+import { saveData } from "../utils/storage";
 
 interface Action {
   type: string,
@@ -8,13 +9,24 @@ interface Action {
 }
 
 const columns = (state: Array<Column> = [], action: Action) => {
+  let list: Array<Column> = [];
   switch(action.type) {
     case 'ADD_COLUMN':
       const {id, name} = action;
-      return [
+      list = [
         ...state,
-        { id, name, items: [] }
+        { id, name }
       ];
+      saveData({columns: list})
+      return list
+    case 'EDIT_COLUMN':
+      list = state.map(item => (
+        item.id === action.id
+          ? { ...item, name: action.name }
+          : item
+      ))
+      saveData({columns: list});
+      return list;
     default:
       return state;
   }

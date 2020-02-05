@@ -1,6 +1,7 @@
-import { State, Options} from '../type';
+import { State, Options, Column} from '../type';
 interface Save {
   todos?: Array<State>,
+  columns ?: Array<Column>,
   settings?: Options,
 }
 export function saveData(data: Save) {

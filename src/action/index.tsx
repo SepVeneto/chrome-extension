@@ -46,6 +46,14 @@ export const addColumn = (name: string) => {
   }
 }
 
+export const editColumn = (id: string, name: string) => {
+  return {
+    type: 'EDIT_COLUMN',
+    id,
+    name,
+  }
+}
+
 export const setVisibleColumn = (columnId: string) => {
   return {
     type: 'SET_VISIBLE_COLUMN',
