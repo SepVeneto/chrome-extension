@@ -5,12 +5,14 @@ interface Props extends Column {
   active: string,
   onEditColumn: Function,
   onChangeActive: Function,
+  onContextMenu: Function,
 }
 
-const Column = ({ id, name, active, onEditColumn, onChangeActive }: Props) => {
+const Column = ({ id, name, active, onEditColumn, onChangeActive, onContextMenu }: Props) => {
   const [editable, toggleEditable]: [boolean, Function] = useState(false);
   const [columnName, setColumnName]: [string, Function] = useState('');
   const inputEl = useRef<HTMLInputElement>(null);
+  const columnEl = useRef<HTMLLIElement>(null);
   function handleMouseDown(e: MouseEvent, columnName: string) {
     if (e.button === 1) {
       toggleEditable(true);
@@ -28,8 +30,10 @@ const Column = ({ id, name, active, onEditColumn, onChangeActive }: Props) => {
   return (
     <li
       title={name}
+      ref={columnEl}
       onClick={() => onChangeActive(id)}
       onMouseDown={(e) => handleMouseDown(e, name)}
+      onContextMenu={(e) => { e.preventDefault(); onContextMenu(e.nativeEvent.x, e.nativeEvent.y)}}
     >
       {!editable
         ? <div className="mark-name" ><span>{name}</span></div>

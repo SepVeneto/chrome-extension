@@ -54,6 +54,13 @@ export const editColumn = (id: string, name: string) => {
   }
 }
 
+export const deleteColumn = (id: string) => {
+  return {
+    type: 'DELETE_COLUMN',
+    id,
+  }
+}
+
 export const setVisibleColumn = (columnId: string) => {
   return {
     type: 'SET_VISIBLE_COLUMN',

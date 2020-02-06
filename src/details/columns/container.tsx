@@ -1,6 +1,6 @@
 import { Store } from "../../type"
 import { connect } from "react-redux";
-import { addColumn, editColumn, setVisibleColumn } from "../../action";
+import { addColumn, editColumn, setVisibleColumn, deleteColumn } from "../../action";
 import { Dispatch } from "redux";
 import columnsList from './index';
 import { Column } from '../../type'
@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     },
     onEditColumn (id: string, name: string) {
       dispatch(editColumn(id, name));
+    },
+    onDeleteColumn(id: string) {
+      dispatch(deleteColumn(id));
     },
     onSetVisibleColumn (id: string) {
       dispatch(setVisibleColumn(id))

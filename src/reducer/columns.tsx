@@ -27,6 +27,16 @@ const columns = (state: Array<Column> = [], action: Action) => {
       ))
       saveData({columns: list});
       return list;
+    case 'DELETE_COLUMN':
+      list = [...state];
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i].id === action.id) {
+          list.splice(i, 1);
+          saveData({columns: list})
+          break;
+        }
+      }
+      return list;
     default:
       return state;
   }
